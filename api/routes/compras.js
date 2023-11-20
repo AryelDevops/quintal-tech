@@ -1,28 +1,16 @@
-// Rota para registrar compras
 const express = require('express');
 const router = express.Router();
+const Compra = require('../models/Compra'); // Adjust the path according to your project structure
+const connect = require('../db/Connect');
 
-router.post('/compras', async (req, res) => {
-    try {
-      const { produto, quantidade, custo, fornecedor } = req.body;
-  
-      // Crie uma nova entrada no estoque para a compra
-      const movimentacao = new MovimentacaoEstoque({
-        produto,
-        tipo: 'compra',
-        quantidade,
-        custo
-      });
-      
-      // Atualize o estoque do produto
-      const produtoAtualizado = await Produto.findByIdAndUpdate(produto, {
-        $inc: { quantidadeEstoque: quantidade }
-      });
-  
-      res.status(201).json({ mensagem: 'Compra registrada com sucesso' });
-    } catch (error) {
-      res.status(500).json({ erro: 'Ocorreu um erro ao registrar a compra' });
-    }
-  });
+router.post('/compras', (req, res) => {
+  connect();
+  console.log(req.body);
+  const compra = new Compra(req.body);
+  console.log(compra);
+  compra.save()
+      .then(data => res.json(data))
+      .catch(err => res.status(500).json({message: err.message}));
+});
 
-module.exports = compras;
+module.exports = router;
