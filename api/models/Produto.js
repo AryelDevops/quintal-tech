@@ -9,10 +9,10 @@ const ProdutoSchema = new mongoose.Schema({
   variedade: String,
   dataPlantio: Date,
   dataColheita: Date,
-  fornecedor: {
-    type: mongoose.Schema.Types.ObjectId,
-    ref: 'Fornecedor'
-  },
+//  fornecedor: {
+  //  type: mongoose.Schema.Types.ObjectId,
+ //   ref: 'Fornecedor'
+//  },
   custo: Number,
   precoVenda: Number,
   quantidadeEstoque: Number
