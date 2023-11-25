@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 const Schema = mongoose.Schema;
 
-const CompraSchema = new Schema(
+const VendaSchema = new Schema(
   {
     productId: {
       type: Schema.Types.ObjectId,
@@ -27,4 +27,6 @@ const CompraSchema = new Schema(
   { timestamps: true }
 );
 
-module.exports = mongoose.model("Compra", CompraSchema);
+const Venda = mongoose.model("Venda", VendaSchema);
+
+module.exports = Venda;

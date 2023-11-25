@@ -1,23 +1,15 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
-// Defina o modelo de dados para produtos de verdura
 const ProdutoSchema = new mongoose.Schema({
-  nome: {
+  description: {
     type: String,
-    required: true
+    required: true,
   },
-  variedade: String,
-  dataPlantio: Date,
-  dataColheita: Date,
-//  fornecedor: {
-  //  type: mongoose.Schema.Types.ObjectId,
- //   ref: 'Fornecedor'
-//  },
-  custo: Number,
-  precoVenda: Number,
-  quantidadeEstoque: Number
+  code: {
+    type: Number,
+  },
 });
 
-const Produto = mongoose.model('Produto', ProdutoSchema);
+const Produto = mongoose.model("Produto", ProdutoSchema);
 
 module.exports = Produto;
